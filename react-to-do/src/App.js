@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import Fragments from './components/Fragments';
 import './App.css';
+import FirsComponent from './components/FirstComponent';
+import Hooks from './components/Hooks';
+import List from './components/List'
+import RenderCond from './components/RenderCond';
+import Container from './components/Container';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Olá, react</h2>
+      <FirsComponent />
+      <Hooks />
+      <List />
+      <RenderCond x = {5} y = {10}/>
+      <Fragments />
+      <Container>
+        <h1>Este é o filho do container</h1>
+      </Container>
     </div>
   );
 }
