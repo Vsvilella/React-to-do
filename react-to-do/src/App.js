@@ -1,25 +1,41 @@
-import Fragments from './components/Fragments';
 import './App.css';
-import FirsComponent from './components/FirstComponent';
-import Hooks from './components/Hooks';
-import List from './components/List'
-import RenderCond from './components/RenderCond';
-import Container from './components/Container';
+import {useState, useEffect} from "react"
+import {BsTrash, BsBookmarkCheck, BsBookmarkCheckFill} from "react-icons/bs"
+
+const API = "http://localhost:5000"
 
 function App() {
+  const [title, setTitle] = useState("");
+  const [time, setTime] = useState("");
+  const [todos, setTodos] = useState ([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('enviou');
+  }
+
   return (
     <div className="App">
-      <h2>Olá, react</h2>
-      <FirsComponent />
-      <Hooks />
-      <List />
-      <RenderCond x = {5} y = {10}/>
-      <Fragments />
-      <Container>
-        <h1>Este é o filho do container</h1>
-      </Container>
+      <div className='todo-header'>
+        <h1>React todo</h1>
+      </div>
+      <div className='form-todo'>
+        <h2>Inseria sua próxima tarefa: </h2>
+        <form onSubmit={handleSubmit}>
+          <div className='form-control'>
+          <label htmlFor='title'>O que você vai fazer?</label>
+          <input type='text' name='title' placeholder='Título da Tarefa' 
+            onChange={(e) => setTitle(e.target.value)} value={title || ""} required />
+          </div>
+          <input type='submit' value='enviar' />
+        </form>
+      </div>
+      <div className='list-todo'>
+        <h2>Lista de Tarefas</h2>
+        {todos.length === 0 && <p>Não Há tarefas!</p>}
+      </div>
     </div>
   );
 }
-
 export default App;
